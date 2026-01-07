@@ -5,5 +5,8 @@ import Header from "@/components/Header.vue";
 <template>
   <v-app>
     <Header />
+    <v-main>
+      <router-view />
+    </v-main>
   </v-app>
 </template>
