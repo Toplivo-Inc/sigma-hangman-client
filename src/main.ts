@@ -10,8 +10,11 @@ import App from './App.vue'
 import { createPinia } from "pinia";
 
 const vuetify = createVuetify({
-    components,
-    directives,
+  components,
+  directives,
+  theme: {
+    defaultTheme: 'system'
+  }
 })
 
 const pinia = createPinia()
