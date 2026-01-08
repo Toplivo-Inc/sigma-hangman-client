@@ -2,6 +2,7 @@ import { createVuetify } from "vuetify/framework";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { VFileUpload } from "vuetify/labs/VFileUpload";
 
 export const catppuccinDarkTheme = {
   dark: true,
@@ -48,7 +49,10 @@ export const catppuccinDarkTheme = {
 }
 
 export default createVuetify({
-  components,
+  components: {
+    ...components,
+    VFileUpload,
+  },
   directives,
   theme: {
     defaultTheme: 'system',
