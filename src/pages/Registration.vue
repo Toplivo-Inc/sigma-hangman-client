@@ -39,16 +39,16 @@ const passwordRules = [
 <template>
   <v-container
     class="d-flex align-center justify-center"
-    style="min-height: 100vh"
   >
     <v-sheet width="600" elevation="4" rounded class="px-16 py-8">
       <v-form fast-fail @submit.prevent>
+        <v-card-title>Регистрация</v-card-title>
         <v-text-field
           clearable
           v-model="email"
           :rules="emailRule"
           label="Email"
-          variant="outlined"
+          variant="solo"
           required
         />
 
@@ -57,7 +57,7 @@ const passwordRules = [
           v-model="userName"
           :rules="userNameRule"
           label="Имя"
-          variant="outlined"
+          variant="solo"
           required
         />
 
@@ -69,7 +69,7 @@ const passwordRules = [
           v-model="password"
           :rules="passwordRules"
           label="Пароль"
-          variant="outlined"
+          variant="solo"
           required
         />
 
@@ -85,7 +85,7 @@ const passwordRules = [
 
         <v-file-upload
           clearable
-          density="comfortable"
+          density="compact"
           variant="compact"
           icon="mdi-upload"
           scrim="primary"
@@ -96,7 +96,6 @@ const passwordRules = [
           type="submit"
           block
           class="mt-4"
-          :disabled="!email || !userName || !password"
           color="secondary"
         >
           Войти

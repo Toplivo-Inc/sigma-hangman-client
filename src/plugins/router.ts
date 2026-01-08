@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import App from "@/App.vue";
-import Auth from "@/pages/Auth.vue";
+import Registration from "@/pages/Registration.vue";
 
 const routes = [
-  { path: '/auth', component: Auth },
+  { path: '/registration', component: Registration },
   {
     path: '/',
     component: App,
