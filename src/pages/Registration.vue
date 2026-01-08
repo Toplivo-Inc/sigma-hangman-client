@@ -1,39 +1,14 @@
 <script setup lang="ts">
 
 import { ref } from "vue";
+import { validator } from "@/utils/validator.ts";
 
 const email = ref('');
-const userName = ref('')
+const username = ref('')
 const password = ref('')
 const showPassword = ref(false)
 const sex = ref<'male' | 'female' | null>(null)
 
-
-const emailRule = [
-  (value: string) => {
-    return (/.+@.+\..+/.test(value)) ? true : 'Неккоректный Email-адрес'
-  }
-]
-
-const userNameRule = [
-  (value: string) => {
-    if (value.length < 3) return 'Имя должно быть не короче 3 символов'
-    if (/\s/.test(value)) return 'Имя не должно содержать пробелы'
-    return true
-  }
-]
-
-const passwordRules = [
-  (value: string) => {
-    if (value?.length < 8) return 'Длина пароля не менее 8 символов'
-    if (!(/(?=.*[a-zа-яё])/.test(value))) return 'Хотя бы одна строчная буква'
-    if (!(/(?=.*[A-ZА-ЯЁ])/.test(value))) return 'Хотя бы одна заглавная буква'
-    if (!(/(?=.*\d)/.test(value))) return 'Хотя бы одна цифра'
-    if (!(/(?=.*[^\w\s])/.test(value))) return 'Хотя бы один спецсивол'
-    if (/\s/.test(value)) return 'Пароль не должен содержать пробелы'
-    return true
-  }
-]
 </script>
 
 <template>
@@ -46,7 +21,7 @@ const passwordRules = [
         <v-text-field
           clearable
           v-model="email"
-          :rules="emailRule"
+          :rules="validator.email"
           label="Email"
           variant="solo"
           required
@@ -54,8 +29,8 @@ const passwordRules = [
 
         <v-text-field
           clearable
-          v-model="userName"
-          :rules="userNameRule"
+          v-model="username"
+          :rules="validator.username"
           label="Имя"
           variant="solo"
           required
@@ -67,7 +42,7 @@ const passwordRules = [
           :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
           @click:append-inner="showPassword = !showPassword"
           v-model="password"
-          :rules="passwordRules"
+          :rules="validator.password"
           label="Пароль"
           variant="solo"
           required
