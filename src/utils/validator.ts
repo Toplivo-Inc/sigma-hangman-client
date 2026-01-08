@@ -7,6 +7,7 @@ export const validator = {
     (value: string) => !/\s/.test(value) || 'Имя не должно содержать пробелы'
   ],
   password: [
+    (value: string) => !!value || 'Введите пароль',
     (value: string) => value.length >= 8 || 'Длина пароля не менее 8 символов',
     (value: string) => /(?=.*[a-zа-яё])/.test(value) || 'Хотя бы одна строчная буква',
     (value: string) => /(?=.*[A-ZА-ЯЁ])/.test(value) || 'Хотя бы одна заглавная буква',
