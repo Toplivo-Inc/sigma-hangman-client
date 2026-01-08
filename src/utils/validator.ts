@@ -3,6 +3,7 @@ export const validator = {
     (value: string) => /.+@.+\..+/.test(value) || 'Неккоректный Email-адрес'
   ],
   username: [
+    (value: string) => !!value || 'Введите Имя',
     (value: string) => value.length >= 3 || 'Имя должно быть не короче 3 символов',
     (value: string) => !/\s/.test(value) || 'Имя не должно содержать пробелы'
   ],
