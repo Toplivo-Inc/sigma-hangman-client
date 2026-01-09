@@ -2,13 +2,12 @@
 
 import { ref } from "vue";
 import { validator } from "@/utils/validator.ts";
+import { userStore } from "@/stores/user.store.ts";
+import { storeToRefs } from "pinia";
 
-const email = ref('');
-const username = ref('')
-const password = ref('')
 const showPassword = ref(false)
-const sex = ref<'male' | 'female' | null>(null)
-const avatar = ref('')
+
+const { user } = storeToRefs( userStore())
 
 </script>
 
@@ -21,7 +20,7 @@ const avatar = ref('')
         <v-card-title>Регистрация</v-card-title>
         <v-text-field
           clearable
-          v-model="email"
+          v-model="user.email"
           :rules="validator.email"
           label="Email"
           variant="solo"
@@ -30,7 +29,7 @@ const avatar = ref('')
 
         <v-text-field
           clearable
-          v-model="username"
+          v-model="user.username"
           :rules="validator.username"
           label="Имя"
           variant="solo"
@@ -42,7 +41,7 @@ const avatar = ref('')
           :type="showPassword ? 'text' : 'password'"
           :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
           @click:append-inner="showPassword = !showPassword"
-          v-model="password"
+          v-model="user.password"
           :rules="validator.password"
           label="Пароль"
           variant="solo"
@@ -52,7 +51,7 @@ const avatar = ref('')
         <v-radio-group
           inline
           label="Пол"
-          v-model="sex"
+          v-model="user.sex"
         >
           <v-radio label="Не указывать" :value="null"/>
           <v-radio label="Мужской" value="male"/>
@@ -60,7 +59,7 @@ const avatar = ref('')
         </v-radio-group>
 
         <v-file-upload
-          :v-model="avatar"
+          :v-model="user.avatar"
           clearable
           density="compact"
           variant="compact"

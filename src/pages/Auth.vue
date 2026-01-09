@@ -2,10 +2,12 @@
 
 import { ref } from "vue";
 import { validator } from "@/utils/validator.ts";
+import { userStore } from "@/stores/user.store.ts";
+import { storeToRefs } from "pinia";
 
-const username = ref('')
-const password = ref('')
 const showPassword = ref(false)
+
+const { user } = storeToRefs( userStore())
 </script>
 
 <template>
@@ -18,7 +20,7 @@ const showPassword = ref(false)
 
         <v-text-field
           clearable
-          v-model="username"
+          v-model="user.username"
           :rules="validator.username"
           label="Имя"
           variant="solo"
@@ -30,7 +32,7 @@ const showPassword = ref(false)
           :type="showPassword ? 'text' : 'password'"
           :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
           @click:append-inner="showPassword = !showPassword"
-          v-model="password"
+          v-model="user.password"
           :rules="validator.password"
           label="Пароль"
           variant="solo"
