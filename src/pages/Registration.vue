@@ -4,11 +4,13 @@ import { ref } from "vue";
 import { validator } from "@/utils/validator.ts";
 import { userStore } from "@/stores/user.store.ts";
 import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 
 const showPassword = ref(false)
 
 const { user } = storeToRefs( userStore())
 
+const router = useRouter()
 </script>
 
 <template>
@@ -68,13 +70,22 @@ const { user } = storeToRefs( userStore())
           title="Загрузить аватарку"
         />
 
-        <v-btn
-          type="submit"
-          block
-          class="mt-4"
-          color="secondary"
-          text="Зарегистрироваться"
-        />
+        <v-col
+          class="mt-4 d-flex flex-column ga-2"
+        >
+          <v-btn
+            @click="() => router.push('auth')"
+            variant="text"
+            text="У меня уже есть аккаунт"
+            density="compact"
+          />
+
+          <v-btn
+            type="submit"
+            color="secondary"
+            text="Зарегистрироваться"
+          />
+        </v-col>
       </v-form>
     </v-sheet>
   </v-container>
