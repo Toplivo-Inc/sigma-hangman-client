@@ -72,9 +72,8 @@ const sex = ref<'male' | 'female' | null>(null)
           block
           class="mt-4"
           color="secondary"
-        >
-          Войти
-        </v-btn>
+          text="Зарегистрироваться"
+        />
       </v-form>
     </v-sheet>
   </v-container>
