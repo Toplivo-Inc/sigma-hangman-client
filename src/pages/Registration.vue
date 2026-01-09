@@ -8,6 +8,7 @@ const username = ref('')
 const password = ref('')
 const showPassword = ref(false)
 const sex = ref<'male' | 'female' | null>(null)
+const avatar = ref('')
 
 </script>
 
@@ -59,6 +60,7 @@ const sex = ref<'male' | 'female' | null>(null)
         </v-radio-group>
 
         <v-file-upload
+          :v-model="avatar"
           clearable
           density="compact"
           variant="compact"
